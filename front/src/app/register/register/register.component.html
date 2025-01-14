@@ -1,0 +1,45 @@
+<div class="p-4">
+  <h2>Créer un compte</h2>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="username">Nom d'utilisateur</label>
+      <input pInputText
+             id="username"
+             formControlName="username"
+             class="w-full">
+    </div>
+
+    <div class="mb-3">
+      <label for="firstname">Prénom</label>
+      <input pInputText
+             id="firstname"
+             formControlName="firstname"
+             class="w-full">
+    </div>
+
+    <div class="mb-3">
+      <label for="email">Email</label>
+      <input pInputText
+             id="email"
+             type="email"
+             formControlName="email"
+             class="w-full">
+    </div>
+
+    <div class="mb-3">
+      <label for="password">Mot de passe</label>
+      <p-password id="password"
+                  formControlName="password"
+                  [feedback]="false"
+                  [toggleMask]="true"
+                  class="w-full">
+      </p-password>
+    </div>
+
+    <p-button type="submit"
+              label="S'inscrire"
+              [loading]="loading"
+              [disabled]="registerForm.invalid || loading">
+    </p-button>
+  </form>
+</div>

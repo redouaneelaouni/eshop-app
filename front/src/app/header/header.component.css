@@ -1,0 +1,9 @@
+:host {
+  display: block;
+}
+:host ::ng-deep .p-toolbar {
+  padding: 1rem 2rem;
+  background: var(--surface-0);
+  border: none;
+  border-bottom: 1px solid var(--surface-200);
+}

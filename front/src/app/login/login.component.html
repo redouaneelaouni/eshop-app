@@ -1,0 +1,61 @@
+<div class="flex align-items-center justify-content-center min-h-screen bg-gray-50">
+  <div class="surface-card p-6 shadow-2 border-round w-full md:w-6 lg:w-4">
+    <h1 class="text-3xl font-medium mb-2 text-center text-900">Welcome Back</h1>
+    <p class="text-600 mb-6 text-center">Sign in to continue</p>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="mb-4">
+        <input
+          pInputText
+          formControlName="email"
+          placeholder="Email"
+          class="w-full p-3"
+          [ngClass]="{'ng-invalid ng-dirty': submitted && f['email'].errors}"
+        >
+        <small class="p-error block mt-1" *ngIf="submitted && f['email'].errors?.['required']">
+          Email is required
+        </small>
+        <small class="p-error block mt-1" *ngIf="submitted && f['email'].errors?.['email']">
+          Invalid email format
+        </small>
+      </div>
+
+      <div class="mb-4">
+        <p-password
+          formControlName="password"
+          [feedback]="false"
+          [toggleMask]="true"
+          placeholder="Password"
+          styleClass="w-full"
+          [inputStyleClass]="'w-full p-3' + (submitted && f['password'].errors ? ' ng-invalid ng-dirty' : '')"
+        >
+        </p-password>
+        <small class="p-error block mt-1" *ngIf="submitted && f['password'].errors?.['required']">
+          Password is required
+        </small>
+      </div>
+
+      <div class="flex flex-column gap-3">
+        <button
+          pButton
+          type="submit"
+          [loading]="(loading$ | async) ?? false"
+          class="p-3 text-xl w-full"
+          label="Sign In"
+        >
+        </button>
+
+        <button
+          pButton
+          type="button"
+          (click)="goToRegister()"
+          class="p-3 text-xl w-full p-button-outlined"
+          label="Create new account"
+        >
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<p-toast position="top-right"></p-toast>

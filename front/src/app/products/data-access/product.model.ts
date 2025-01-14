@@ -6,6 +6,7 @@ export interface Product {
     image: string;
     category: string;
     price: number;
+    totalPrice: number,
     quantity: number;
     internalReference: string;
     shellId: number;
